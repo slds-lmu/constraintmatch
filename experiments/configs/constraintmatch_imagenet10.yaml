@@ -1,0 +1,43 @@
+model_params:
+    model: 'constraintmatch'
+    loss:
+        loss: MBCE
+    val_loss:
+        loss: MBCE
+    architecture:
+        arch: 'resnet34'
+        num_classes: 10
+        pretrained: True
+        freeze: False
+
+exp_params:
+    dataset: 'imagenet10'
+    batch_size: 100
+    batch_size_ul: 300
+    val_size: 1000
+    num_constraints: 5000
+    num_constraints_val: 1000
+    num_classes: 10
+    k: NULL
+    learning_rate: 0.03
+    weight_decay: 0.00001
+    momentum: 0.9
+    scheduler: 'cosine'
+    constraintmatch: True
+    loss_type: 'ccm_4'
+    lambda_unsup: 0.1
+    threshold: 0.05
+    fold: 0
+    plot: 0
+    num_workers: 0
+    val_every_n_epoch: 10
+
+trainer_params:
+    max_steps: 20000
+    min_steps: 20000
+    gpus: -1
+
+logging_params:
+    manual_seed: 1337
+    experiment_name: 'in10'
+    run_name: 'foo'
